@@ -138,6 +138,11 @@ type XXX_InternalExtensions struct {
 	}
 }
 
+func (e *XXX_InternalExtensions) HasExtension(id int32)bool{
+	_, exists := e.p.extensionMap[id]
+	return exists
+}
+
 // extensionsWrite returns the extension map, creating it on first use.
 func (e *XXX_InternalExtensions) extensionsWrite() map[int32]Extension {
 	if e.p == nil {
