@@ -143,12 +143,12 @@ func (e *XXX_InternalExtensions) HasExtension(id int32)bool{
 	return exists
 }
 
-func (e *XXX_InternalExtensions) GetExtension(id int32)string{
+func (e *XXX_InternalExtensions) GetExtension(id int32)[]byte{
 	optionValue, exists := e.p.extensionMap[id]
 	if exists {
-		return string(optionValue.enc)
+		return optionValue.enc
 	}
-	return ""
+	return nil
 }
 
 // extensionsWrite returns the extension map, creating it on first use.
