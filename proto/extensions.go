@@ -151,6 +151,15 @@ func (e *XXX_InternalExtensions) GetExtension(id int32)[]byte{
 	return nil
 }
 
+func (e *XXX_InternalExtensions) ForEachExtension(onConsume func (int32, []byte)) {
+	if e.p == nil {
+		return
+	}
+	for k, v := range e.p.extensionMap {
+		onConsume(k, v.enc)
+	}
+}
+
 // extensionsWrite returns the extension map, creating it on first use.
 func (e *XXX_InternalExtensions) extensionsWrite() map[int32]Extension {
 	if e.p == nil {
