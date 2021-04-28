@@ -139,6 +139,9 @@ type XXX_InternalExtensions struct {
 }
 
 func (e *XXX_InternalExtensions) HasExtension(id int32)bool{
+	if e.p == nil {
+		return false
+	}
 	_, exists := e.p.extensionMap[id]
 	return exists
 }
